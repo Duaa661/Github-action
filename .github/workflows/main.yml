@@ -8,3 +8,6 @@ jobs:
 
     steps:
        - run: echo ${{5>4 && 6<4}}
+       - name: Show Actor
+        run: echo "Triggered by ${{ github.actor }}"
+
