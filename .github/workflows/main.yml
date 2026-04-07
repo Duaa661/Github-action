@@ -5,12 +5,10 @@ on: [push, workflow_dispatch]
 jobs:
   my-first-job:
     env:
-       Jwt_secret: "My first Secret."
-       token: "Token is here"
-      
+      USER: "ubuntu"
     runs-on: ubuntu-latest
     steps:
         - run: echo "${{ toJson(github) }}"
         - run: echo "${{secrets.GITHUB_TOKEN}}"
-        - run: echo "${{github.token==secrets.GITHUB_TOKEN}}"
+        - run: echo "${{env.USER}}"
 
