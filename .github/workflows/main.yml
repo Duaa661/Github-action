@@ -1,5 +1,4 @@
 name: My first workflow
-name: My first workflow
 
 on:
   push:
@@ -9,14 +8,14 @@ on:
 
 jobs:
   my-first-job:
-    if: false
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
 
     steps:
       - run: echo "This is my first job"
 
   my-second-job:
-    if: true
+    if: github.ref_name == 'develop'
     runs-on: ubuntu-latest
 
     steps:
