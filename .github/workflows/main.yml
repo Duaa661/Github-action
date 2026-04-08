@@ -9,7 +9,7 @@ on:
 
 jobs:
   my-prod-job:
-    environment: Prod
+    environment: ${{github.ref_name == 'main' && 'Prod' || 'Test'}}
     runs-on: ubuntu-latest
 
     steps:
