@@ -1,4 +1,5 @@
 name: My first workflow
+name: My first workflow
 
 on:
   push:
@@ -6,12 +7,17 @@ on:
       - main
       - develop
 
-
 jobs:
-  my-prod-job:
+  my-first-job:
     if: false
-    environment: ${{github.ref_name == 'main' && 'Prod' || 'Test'}}
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo ${{vars.APP_URL}}
+      - run: echo "This is my first job"
+
+  my-second-job:
+    if: true
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "This is my second job"
