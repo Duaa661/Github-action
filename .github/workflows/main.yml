@@ -9,6 +9,7 @@ on:
 
 jobs:
   my-prod-job:
+    if: false
     environment: ${{github.ref_name == 'main' && 'Prod' || 'Test'}}
     runs-on: ubuntu-latest
 
