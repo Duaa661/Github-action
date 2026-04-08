@@ -1,26 +1,22 @@
 name: My first workflow
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
-  my-prod-job:
-    environment: Prod
+  my-first-job:
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print secret
-        run: echo ${{ secrets.MY_AWS_SECRET }}
+      - run: echo "This is my first job"
 
-      - name: Print app URL
-        run: echo ${{ vars.APP_URL }}
-
-  my-test-job:
-    environment: Test
+  my-second-job:
+    if: github.ref_name == 'develop'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print secret
-        run: echo ${{ secrets.MY_AWS_SECRET }}
-
-      - name: Print app URL
-        run: echo ${{ vars.APP_URL }}
+      - run: echo "This is my second job"
