@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "This is my first job"
+      - run: echo "This is my first jobs"
 
   my-second-job:
     if: github.ref_name == 'develop'
