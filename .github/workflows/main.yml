@@ -3,12 +3,24 @@ name: My first workflow
 on: [push, workflow_dispatch]
 
 jobs:
-  my-first-job:
-    env:
-      USER: "ubuntu"
+  my-prod-job:
+    environment: Prod
     runs-on: ubuntu-latest
-    steps:
-        - run: echo "${{ toJson(github) }}"
-        - run: echo "${{secrets.GITHUB_TOKEN}}"
-        - run: echo "${{env.USER}}"
 
+    steps:
+      - name: Print secret
+        run: echo ${{ secrets.MY_AWS_SECRET }}
+
+      - name: Print app URL
+        run: echo ${{ vars.APP_URL }}
+
+  my-test-job:
+    environment: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print secret
+        run: echo ${{ secrets.MY_AWS_SECRET }}
+
+      - name: Print app URL
+        run: echo ${{ vars.APP_URL }}
